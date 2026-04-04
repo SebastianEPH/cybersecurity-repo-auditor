@@ -4,14 +4,18 @@
   "module-name": "cybersecurity",
   "version": "0.0.1",
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "start": "tsx src/index.ts",
+    "example": "npm run start -- example",
     "npm-prefix": "npm config set save-prefix=''",
     "npm-remove-prefix": "npm config delete save-prefix",
     "npm-verify-prefix": "npm config get save-prefix"
   },
   "dependencies": {
+    "axios": "1.14.0",
+    "dotenv": "17.4.0"
   },
   "devDependencies": {
+    "@types/node": "25.5.2",
     "tsx": "4.21.0",
     "typescript": "6.0.2"
   }
