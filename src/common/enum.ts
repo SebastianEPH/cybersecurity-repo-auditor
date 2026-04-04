@@ -1,0 +1,86 @@
+export enum HEADERS {
+	AUTHORIZATION = 'Authorization',
+	CONTENT_TYPE = 'Content-Type',
+}
+export enum PATHS {
+	GIT = 'GIT',
+}
+export enum VALUE {
+	ALLOW = '*',
+	APPLICATION_JSON = 'application/json',
+}
+
+export enum LAMBDA_METHOD {
+	PROXY = '/{proxy+}',
+}
+export enum BOOLEAN_STRING {
+	TRUE = 'true',
+	FALSE = 'false',
+}
+export enum BOOLEAN_STRING_NUMBER {
+	TRUE = '1',
+	FALSE = '0',
+}
+export enum METHOD_HTTP {
+	POST = 'POST',
+	GET = 'GET',
+	PATCH = 'PATCH',
+	OPTIONS = 'OPTIONS',
+}
+export enum POSITION {
+	FIRST = 0,
+	SECOND = 1,
+	THIRD = 2,
+	FOURTH = 3,
+	FIFTH = 4,
+	SIXTH = 5,
+	SEVENTH = 6,
+	EIGHTH = 7,
+	NINTH = 8,
+	TENTH = 9,
+}
+
+export enum TIMEOUT {
+	PROVIDER = 99001,
+	REDIS = 10000,
+	MYSQL = 10000,
+}
+export enum HTTP {
+	STATUS_CODE_201 = 201,
+	STATUS_CODE_200 = 200,
+	STATUS_CODE_400 = 400,
+	STATUS_CODE_401 = 401,
+	STATUS_CODE_403 = 403,
+	STATUS_CODE_404 = 404,
+	STATUS_CODE_440 = 440,
+	STATUS_CODE_441 = 441,
+	STATUS_CODE_500 = 500,
+	STATUS_CODE_671 = 671,
+	STATUS_CODE_679 = 679,
+}
+
+export enum NUM {
+	ZERO = 0,
+	ONE = 1,
+	TWO = 2,
+	THREE = 3,
+	FOUR = 4,
+	FIVE = 5,
+	SIX = 6,
+	SEVEN = 7,
+	EIGHT = 8,
+	NINE = 9,
+	TEN = 10,
+	TWELVE = 12,
+	THIRTEEN = 13,
+	FIFTEEN = 15,
+	SIXTEEN = 16,
+	NINE_TEEN = 19,
+	TWENTY_FIVE = 25,
+	FIFTY = 50,
+	ONE_HUNDRED = 100,
+	TEN_THOUSND = 10000,
+	ONE_HUNDRED_THOUSAND = 100000,
+	ONE_TRILLION = 1000000000000,
+	TEN_CUATRILLION = 10000000000000000,
+}
