@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "name": "cybersecurity-repo-auditor",
+  "module-name": "cybersecurity",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "npm-prefix": "npm config set save-prefix=''",
+    "npm-remove-prefix": "npm config delete save-prefix",
+    "npm-verify-prefix": "npm config get save-prefix"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "tsx": "4.21.0",
+    "typescript": "6.0.2"
+  }
+}
