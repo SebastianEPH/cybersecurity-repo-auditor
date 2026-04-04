@@ -8,15 +8,26 @@
     "example": "npm run start -- example",
     "npm-prefix": "npm config set save-prefix=''",
     "npm-remove-prefix": "npm config delete save-prefix",
-    "npm-verify-prefix": "npm config get save-prefix"
+    "npm-verify-prefix": "npm config get save-prefix",
+    "lint": "eslint {src,test}/**",
+    "lint:fix": "eslint --fix {src,test}/**",
+    "format": "prettier --check {src,test}/**",
+    "format:fix": "prettier --write {src,test}/**"
   },
   "dependencies": {
     "axios": "1.14.0",
-    "dotenv": "17.4.0"
+    "dotenv": "17.4.0",
+    "reflect-metadata": "0.2.2"
   },
   "devDependencies": {
+    "@eslint/js": "10.0.1",
     "@types/node": "25.5.2",
+    "@typescript-eslint/eslint-plugin": "8.58.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.5",
+    "prettier": "3.5.3",
     "tsx": "4.21.0",
-    "typescript": "6.0.2"
+    "typescript": "6.0.2",
+    "typescript-eslint": "8.58.0"
   }
 }
