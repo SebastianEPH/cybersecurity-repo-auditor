@@ -17,3 +17,13 @@ Nota: `Por defecto, cualquier .env.xxxx creado, está siendo ignorado por git.`
   with:
   node-version: 20
 ````
+
+## Crear Token Github
+Solo necesitamos acceso para listar los repositorios de la organización para no incumplir el minimo privilegio, nos dirigimos a este URL 
+`https://github.com/settings/tokens`
+![](https://imgur.com/1gvUHve.png)
+ y luego le damos check solo a `repo`, `admin:org => read:org`
+![](https://imgur.com/BdQaN13.png)
+Al finalizar solo copiamos el token generado
+![](https://imgur.com/w8aiorA.png)
+No olvidar colocar ese token access en el `.env.{nombre}` en `GITHUB_ACCESS_TOKEN`
