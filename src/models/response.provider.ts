@@ -1,13 +1,9 @@
 import { HTTP } from '../common/enum.js';
 
-export class ResponseProvider<T> {
-	public statusCode: HTTP | undefined;
-
-	public body: T | undefined;
-
-	public headers?: object;
-
-	public config?: object;
-
-	public request?: object;
+export interface ResponseProvider<T, U> {
+	statusCode: HTTP;
+	body: T | undefined;
+	headers: U;
+	config: object;
+	request: object;
 }

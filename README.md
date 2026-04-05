@@ -18,7 +18,7 @@ Nota: `Por defecto, cualquier .env.xxxx creado, está siendo ignorado por git.`
   node-version: 20
 ````
 
-## Crear Token Github
+## Crear Token Github (Token Classic)
 Solo necesitamos acceso para listar los repositorios de la organización para no incumplir el minimo privilegio, nos dirigimos a este URL 
 `https://github.com/settings/tokens`
 ![](https://imgur.com/1gvUHve.png)
@@ -27,3 +27,15 @@ Solo necesitamos acceso para listar los repositorios de la organización para no
 Al finalizar solo copiamos el token generado
 ![](https://imgur.com/w8aiorA.png)
 No olvidar colocar ese token access en el `.env.{nombre}` en `GITHUB_ACCESS_TOKEN`
+
+## Crear Token Github (Fine-grained)
+En el caso de que la orgnaización tenga bloqueado el acceso mediante TokenClassic, debemos usar este nuevo método, entramos al link `https://github.com/settings/personal-access-tokens` 
+y creamos un nuevo token y configuramos así.
+
+![](https://imgur.com/qVw62Ab.png)
+y referente a permisos, selecionamos 
+![](https://imgur.com/mDQCYwz.png)
+y creamos el token, este luce distinto, pero igualmente es compatible, colocar dentro de `.env.{nombre}` en `GITHUB_ACCESS_TOKEN`.
+
+
+

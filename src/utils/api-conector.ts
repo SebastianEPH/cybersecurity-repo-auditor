@@ -23,7 +23,7 @@ export class ApiConnectorUtil {
 		});
 	}
 
-	public async get<T>(path: string, headers: object = {}): Promise<ResponseProvider<T>> {
+	public async get<T, U>(path: string, headers: object = {}, params: object = {}): Promise<ResponseProvider<T, U>> {
 		try {
 			const {
 				data,
@@ -31,12 +31,12 @@ export class ApiConnectorUtil {
 				headers: headerResponse,
 				config,
 				request,
-			} = await this.axiosInstance.get(path, { headers });
+			} = await this.axiosInstance.get(path, { headers, params });
 			return {
 				statusCode: Mapper.parseStatusCodeForAxios(status),
 				body: data,
 				config,
-				headers: headerResponse,
+				headers: <U>headerResponse,
 				request,
 			};
 		} catch (error) {
@@ -45,7 +45,7 @@ export class ApiConnectorUtil {
 		}
 	}
 
-	public async getFile<T>(path: string, headers: object = {}): Promise<ResponseProvider<T>> {
+	public async getFile<T, U>(path: string, headers: object = {}): Promise<ResponseProvider<T, U>> {
 		try {
 			const {
 				data,
@@ -61,7 +61,7 @@ export class ApiConnectorUtil {
 				statusCode: Mapper.parseStatusCodeForAxios(status),
 				body: data,
 				config,
-				headers: headerResponse,
+				headers: <U>headerResponse,
 				request,
 			};
 		} catch (error) {
@@ -70,7 +70,7 @@ export class ApiConnectorUtil {
 		}
 	}
 
-	public async post<T>(path: string, payload: object, headers: object = {}): Promise<ResponseProvider<T>> {
+	public async post<T, U>(path: string, payload: object, headers: object = {}): Promise<ResponseProvider<T, U>> {
 		try {
 			const {
 				data,
@@ -83,7 +83,7 @@ export class ApiConnectorUtil {
 				statusCode: Mapper.parseStatusCodeForAxios(status),
 				body: data,
 				config,
-				headers: headerResponse,
+				headers: <U>headerResponse,
 				request,
 			};
 		} catch (error) {
@@ -98,7 +98,7 @@ export class ApiConnectorUtil {
 	public get timeOut(): number {
 		return this.config.timeout;
 	}
-	private parseError<T>(error: unknown): ResponseProvider<T> {
+	private parseError<T, U>(error: unknown): ResponseProvider<T, U> {
 		const e = error as any;
 		return {
 			statusCode: Mapper.parseStatusCodeForAxios(e.response?.status),

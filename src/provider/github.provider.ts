@@ -1,5 +1,6 @@
-import { ResponseProvider } from '../models/response.provider.js';
+import { GithubPaginationRepository, GithubRepos } from '../interfaces/github-repos.interface.js';
 
 export interface GithubProvider {
-	listRepositories(): Promise<object>;
+	listAllRepositories(): Promise<GithubRepos[]>;
+	listRepositories(limitItems: number, page: number): Promise<GithubPaginationRepository>;
 }
