@@ -4,6 +4,7 @@
   "module-name": "cybersecurity",
   "version": "0.0.1",
   "scripts": {
+    "prestart": "git config --global core.longpaths true",
     "start": "tsx src/index.ts",
     "example": "npm run start -- example",
     "npm-prefix": "npm config set save-prefix=''",
