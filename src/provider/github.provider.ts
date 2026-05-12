@@ -1,6 +1,6 @@
-import { GithubPaginationRepository, GithubRepos } from '../interfaces/github-repos.interface.js';
+import { GithubPaginationRepository, GithubRepositoryInformation } from '../interfaces/github-repos.interface.js';
 
 export interface GithubProvider {
-	listAllRepositories(): Promise<GithubRepos[]>;
+	listAllRepositories(): Promise<GithubRepositoryInformation[]>;
 	listRepositories(limitItems: number, page: number): Promise<GithubPaginationRepository>;
 }

@@ -12,4 +12,19 @@ export class Mapper {
 		return HTTP.STATUS_CODE_500;
 	}
 	public static parseToBoolean = (value: string | boolean) => value === BOOLEAN_STRING.TRUE || value === true;
+
+	public static isValidCodeRepository(text: string): boolean {
+		const regex = /^A\d{3}-.*$/;
+		return regex.test(text);
+	}
+	public static isMaintenanceRepository(text: string): boolean {
+		const regex = /-IaC-infraestructura|-pipeline-devops|-test-automation|_cloudformation|-cloudformation/i;
+		return regex.test(text);
+	}
+	public static getCodeRepository(texto: string): string {
+		const regex = /^(A\d{3})-/;
+		const match = texto.match(regex);
+		return match ? match[1] : "";
+	}
+
 }

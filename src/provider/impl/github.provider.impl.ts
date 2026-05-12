@@ -2,7 +2,11 @@ import { GithubProvider } from '../github.provider.js';
 import { ResponseProvider } from '../../models/response.provider.js';
 import { HEADERS } from '../../common/enum.js';
 import { ApiConnectorUtil } from '../../utils/api-conector.js';
-import { GithubPaginationRepository, GithubRepos, PaginationGitHub } from '../../interfaces/github-repos.interface.js';
+import {
+	GithubPaginationRepository,
+	GithubRepositoryInformation,
+	PaginationGitHub,
+} from '../../interfaces/github-repos.interface.js';
 
 export class GithubProviderImpl implements GithubProvider {
 	private readonly host: string = 'https://api.github.com';
@@ -15,11 +19,11 @@ export class GithubProviderImpl implements GithubProvider {
 		});
 	}
 
-	public async listAllRepositories(): Promise<GithubRepos[]> {
+	public async listAllRepositories(): Promise<GithubRepositoryInformation[]> {
 		const limitItems: number = 100;
 		let currentPage: number = 1;
 		const { repositories, nextPage, lastPage } = await this.listRepositories(limitItems, currentPage);
-		const result: GithubRepos[] = repositories;
+		const result: GithubRepositoryInformation[] = repositories;
 		const promesas: Promise<GithubPaginationRepository>[] = [];
 		for (let i: number = nextPage; i <= lastPage; i++) {
 			promesas.push(this.listRepositories(limitItems, i));
@@ -42,7 +46,9 @@ export class GithubProviderImpl implements GithubProvider {
 			statusCode,
 			body,
 			headers: headersResponse,
-		} = <ResponseProvider<GithubRepos[], { link: string }>>await this.githubConnector.get(path, headers, params);
+		} = <ResponseProvider<GithubRepositoryInformation[], { link: string }>>(
+			await this.githubConnector.get(path, headers, params)
+		);
 		if (!body) {
 			throw new Error(`No body for github repo found for ${path}`);
 		}

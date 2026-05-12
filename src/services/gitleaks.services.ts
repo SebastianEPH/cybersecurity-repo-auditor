@@ -114,7 +114,10 @@ export class GitleaksService {
 			await execAsync(cmd, { timeout: this.timeoutMs });
 
 			// Si gitleaks no encontró nada, NO crea el archivo → lo creamos vacío
-			const fileExists = await fs.access(reportFile).then(() => true).catch(() => false);
+			const fileExists = await fs
+				.access(reportFile)
+				.then(() => true)
+				.catch(() => false);
 			if (!fileExists) {
 				await fs.writeFile(reportFile, '[]', 'utf-8');
 			}
@@ -123,13 +126,13 @@ export class GitleaksService {
 
 			console.log(
 				`  ${leaksFound ? '⚠️ ' : '✅'} ${repoName} ` +
-				`(${Date.now() - start}ms)${leaksFound ? ' — LEAKS FOUND' : ''}`,
+					`(${Date.now() - start}ms)${leaksFound ? ' — LEAKS FOUND' : ''}`,
 			);
 
 			return {
 				repoPath,
 				repoName,
-				reportFile,   // ← siempre tiene valor, nunca null en éxito
+				reportFile, // ← siempre tiene valor, nunca null en éxito
 				success: true,
 				leaksFound,
 				durationMs: Date.now() - start,

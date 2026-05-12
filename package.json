@@ -6,6 +6,7 @@
   "scripts": {
     "prestart": "git config --global core.longpaths true",
     "start": "tsx src/index.ts",
+    "start-raptor": "tsx src/index-raptor.ts",
     "example": "npm run start -- example",
     "npm-prefix": "npm config set save-prefix=''",
     "npm-remove-prefix": "npm config delete save-prefix",

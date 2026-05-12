@@ -1,4 +1,4 @@
-export interface GithubRepos {
+export interface GithubRepositoryInformation {
 	id: number;
 	node_id: string;
 	name: string;
@@ -117,7 +117,7 @@ export interface Permissions {
 export interface CustomProperties {}
 
 export interface GithubPaginationRepository extends PaginationGitHub {
-	repositories: GithubRepos[];
+	repositories: GithubRepositoryInformation[];
 }
 export interface PaginationGitHub {
 	nextPage: number;

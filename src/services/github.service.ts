@@ -6,21 +6,24 @@ import { TimeUtil } from '../utils/time.util.js';
 
 export class GitHubService {
 	private readonly baseDir: string;
-	constructor() {
+	constructor(createNewFolder: boolean) {
 		this.baseDir = path.join(
 			process.env.PATH_CLONE_REPOSITORIES!,
-			TimeUtil.generateUnixTimestamp().toString(),
+			createNewFolder ? TimeUtil.generateUnixTimestamp().toString() : '',
 			process.env.GITHUB_NAME_ORGANIZATION!,
 		);
 		if (!fs.existsSync(this.baseDir)) {
 			fs.mkdirSync(this.baseDir, { recursive: true });
 		}
 	}
-	public async cloneRepositoryFromSSH(sshUrl: string, name: string): Promise<string> {
+	public async cloneRepositoryFromSSH(sshUrl: string, folderCode:string = "", name: string): Promise<string> {
 		console.log(`[CLONE] git clone ${sshUrl}`);
-		const targetPath: string = path.join(this.baseDir, name);
+		const targetPath: string = path.join(this.baseDir, folderCode, name);
 		const execAsync = promisify(exec);
 		await execAsync(`git clone ${sshUrl} ${targetPath}`);
 		return targetPath;
 	}
+
+
+
 }

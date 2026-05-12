@@ -1,19 +1,19 @@
 import { EnvUtil } from './utils/env.util.js';
 import { GithubProviderImpl } from './provider/impl/github.provider.impl.js';
-import { GithubRepos } from './interfaces/github-repos.interface.js';
+import { GithubRepositoryInformation } from './interfaces/github-repos.interface.js';
 import { GitHubService } from './services/github.service.js';
 
 import { GitleaksService } from './services/gitleaks.services.js';
 
 new EnvUtil().load();
 
-const result: GithubRepos[] = await new GithubProviderImpl().listAllRepositories();
+const result: GithubRepositoryInformation[] = await new GithubProviderImpl().listAllRepositories();
 
 // const result: GithubRepos[] = [results[0], results[1], results[2]];
-const githubService: GitHubService = new GitHubService();
+const githubService: GitHubService = new GitHubService(true);
 const listPathsRepository: string[] = [];
 for (const repo of result) {
-	listPathsRepository.push(await githubService.cloneRepositoryFromSSH(repo.ssh_url, repo.name));
+	listPathsRepository.push(await githubService.cloneRepositoryFromSSH(repo.ssh_url, "",repo.name));
 }
 console.log('La lista de repositorios es: ', listPathsRepository);
 
@@ -42,4 +42,3 @@ async function main() {
 }
 
 main().catch(console.error);
-
